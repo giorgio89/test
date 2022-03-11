@@ -34,7 +34,6 @@
         
       function validateCaptcha(e) {
         alert("Entra en validar captcha");
-        e.preventDefault();
         grecaptcha.ready(function() {
           grecaptcha.execute('6Lfr4MweAAAAAOfNC-aRwQZ2C9lHfLr9YDU006Lj', {action: 'submit'}).then(function(token) {
               alert("Token validado: " + token);
