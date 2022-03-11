@@ -28,30 +28,22 @@
       </div>
     </div>
     <script>
-      captchaCallback = function (response) {
-        document.getElementById(captchaUserResponseTokenEl).value = response;
-      };
-
       onloadCallback = function () {
         alert("grecaptcha is ready!");
       };
         
-      function onClick(e) {
-        alert("Entra aquí");
+      function validateCaptcha(e) {
+        alert("Entra en validar captcha");
         e.preventDefault();
         grecaptcha.ready(function() {
           grecaptcha.execute('6Lfr4MweAAAAAOfNC-aRwQZ2C9lHfLr9YDU006Lj', {action: 'submit'}).then(function(token) {
-              alert("Token: " + token);
+              alert("Token validado: " + token);
           });
         });
       }
-      function logSubmit(event) {
-        alert("Submit");
-        event.preventDefault();
-      }
 
       const form = document.getElementById('localAccountForm');
-      form.addEventListener('submit', logSubmit);
+      form.addEventListener('submit', validateCaptcha);
   </script>
     <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=6Lfr4MweAAAAAOfNC-aRwQZ2C9lHfLr9YDU006Lj"></script>
   </body>
