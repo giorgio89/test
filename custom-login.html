@@ -28,28 +28,16 @@
         </div>
       </div>
     </div>
-    <script type="text/javascript">
-      captchaUserResponseTokenEl = "extension_CaptchaUserResponseToken";
-
-      captchaCallback = function (response) {
-        document.getElementById(captchaUserResponseTokenEl).value = response;
-      };
-
-      onloadCallback = function () {
-        grecaptcha.render("html_element", {
-          "sitekey": "6Lfr4MweAAAAAOfNC-aRwQZ2C9lHfLr9YDU006Lj", // ENTER YOUR SITE KEY 
-          "callback": captchaCallback,
+    <script>
+      function onClick(e) {
+        e.preventDefault();
+        grecaptcha.ready(function() {
+          grecaptcha.execute('reCAPTCHA_site_key', {action: 'submit'}).then(function(token) {
+              alert("Token: " + token);
+          });
         });
-
-        // Hides captcha custom attribute from view from the user
-        document.getElementById(captchaUserResponseTokenEl).style.display = "none";
-        document.getElementById(captchaUserResponseTokenEl+"_label").style.display = "none";
-      };
-    </script>
-    <script
-      src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
-      async
-      defer
-    ></script>
+      }
+  </script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6Lfr4MweAAAAAOfNC-aRwQZ2C9lHfLr9YDU006Lj"></script>
   </body>
 </html>
