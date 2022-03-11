@@ -28,6 +28,14 @@
       </div>
     </div>
     <script>
+      captchaCallback = function (response) {
+        document.getElementById(captchaUserResponseTokenEl).value = response;
+      };
+
+      onloadCallback = function () {
+        alert("grecaptcha is ready!");
+      };
+        
       function onClick(e) {
         alert("Entra aquí");
         e.preventDefault();
@@ -38,6 +46,6 @@
         });
       }
   </script>
-    <script src="https://www.google.com/recaptcha/api.js?render=6Lfr4MweAAAAAOfNC-aRwQZ2C9lHfLr9YDU006Lj"></script>
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=6Lfr4MweAAAAAOfNC-aRwQZ2C9lHfLr9YDU006Lj"></script>
   </body>
 </html>
